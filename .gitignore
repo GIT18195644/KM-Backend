@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+
+\DistributionPortal\obj
+\DistributionPortal\bin
+\DistributionPortal\Migrations
+\DistributionPortal\Logs
+\DistributionPortal\Properties
+\.vs 
+/Insee_API V7.zip

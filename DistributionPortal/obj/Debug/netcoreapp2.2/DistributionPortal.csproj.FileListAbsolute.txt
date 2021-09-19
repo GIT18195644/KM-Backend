@@ -1,0 +1,34 @@
+F:\Projects\Insee\BackEnd\DistributionPortal\bin\Debug\netcoreapp2.2\appsettings.Development.json
+F:\Projects\Insee\BackEnd\DistributionPortal\bin\Debug\netcoreapp2.2\appsettings.json
+F:\Projects\Insee\BackEnd\DistributionPortal\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+F:\Projects\Insee\BackEnd\DistributionPortal\bin\Debug\netcoreapp2.2\DistributionPortal.deps.json
+F:\Projects\Insee\BackEnd\DistributionPortal\bin\Debug\netcoreapp2.2\DistributionPortal.runtimeconfig.json
+F:\Projects\Insee\BackEnd\DistributionPortal\bin\Debug\netcoreapp2.2\DistributionPortal.runtimeconfig.dev.json
+F:\Projects\Insee\BackEnd\DistributionPortal\bin\Debug\netcoreapp2.2\DistributionPortal.dll
+F:\Projects\Insee\BackEnd\DistributionPortal\bin\Debug\netcoreapp2.2\DistributionPortal.pdb
+F:\Projects\Insee\BackEnd\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.csprojAssemblyReference.cache
+F:\Projects\Insee\BackEnd\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.RazorAssemblyInfo.cache
+F:\Projects\Insee\BackEnd\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.RazorAssemblyInfo.cs
+F:\Projects\Insee\BackEnd\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.AssemblyInfoInputs.cache
+F:\Projects\Insee\BackEnd\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.AssemblyInfo.cs
+F:\Projects\Insee\BackEnd\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.RazorTargetAssemblyInfo.cache
+F:\Projects\Insee\BackEnd\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.dll
+F:\Projects\Insee\BackEnd\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.pdb
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.AssemblyInfoInputs.cache
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.AssemblyInfo.cs
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.csproj.CoreCompileInputs.cache
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.RazorAssemblyInfo.cache
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.RazorAssemblyInfo.cs
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.dll
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.pdb
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\bin\Debug\netcoreapp2.2\nlog.config
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\bin\Debug\netcoreapp2.2\appsettings.json
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\bin\Debug\netcoreapp2.2\DistributionPortal.deps.json
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\bin\Debug\netcoreapp2.2\DistributionPortal.runtimeconfig.json
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\bin\Debug\netcoreapp2.2\DistributionPortal.runtimeconfig.dev.json
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\bin\Debug\netcoreapp2.2\DistributionPortal.dll
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\bin\Debug\netcoreapp2.2\DistributionPortal.pdb
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.RazorTargetAssemblyInfo.cache
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.genruntimeconfig.cache
+C:\POTENZA\SLIIT\KM Project\Backend\DistributionPortal\obj\Debug\netcoreapp2.2\DistributionPortal.csproj.AssemblyReference.cache
