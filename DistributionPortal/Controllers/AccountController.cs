@@ -124,11 +124,7 @@ namespace DistributionPortal.Controllers
                                 Token = new JwtSecurityTokenHandler().WriteToken(token),
                                 TokenExpiration = token.ValidTo,
                                 UserRole = user.UserRole,
-                                UserId = user.UserName,
-                                Customer1Id = user.Customer1Id,
-                                Customer1Name = user.Customer1Name,
-                                Customer2Id = user.Customer2Id,
-                                Customer2Name = user.Customer2Name
+                                UserId = user.UserName
                             };
                              return Created("", results);
                         }
