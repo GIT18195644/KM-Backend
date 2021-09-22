@@ -10,5 +10,8 @@ namespace DistributionPortal.Data
     public interface IDPRepository
     {
         Task<object> createUser(UserDetailsViewModel userdata);
+        string GetLoggedInUserDetails(string userID);
+        object UpdateLoggedInUserDetails(UserProfileViewModel profile);
+
     }
 }

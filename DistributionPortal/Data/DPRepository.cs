@@ -57,6 +57,7 @@ namespace DistributionPortal.Data
             return localTime.DateTime;
         }
 
+        // Sign up
         public async Task<object> createUser(UserDetailsViewModel userdata)
         {
             try
@@ -124,6 +125,96 @@ namespace DistributionPortal.Data
                         ReturnMsg = "Email already taken"
                     };
                     return emailTaken;
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        // Get LoggedIn User Data
+        public string GetLoggedInUserDetails(string userID)
+        {
+            try
+            {
+                var e = (from h in ctx.Users
+                         where h.UserName == userID
+                         select new
+                         {
+                             h.Company,
+                             h.UserName,
+                             h.UserRole,
+                             h.Email,
+                             h.Name, 
+                             h.Surname,
+                             h.Address,
+                             h.Gender,
+                             h.Birthday,
+                             h.Phone
+                         }).Distinct().ToList();
+
+                var output = JsonConvert.SerializeObject(e);
+
+                return output;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        public object UpdateLoggedInUserDetails(UserProfileViewModel profile)
+        {
+            try
+            {
+                var newMail = ctx.Users.Where(d => d.Email == profile.Email && d.isDeleted == false && d.isActive == false && d.UserName != profile.UserName).ToList();
+                var checkMail1 = ctx.Users.Where(d => d.Email == profile.Email && d.isDeleted == true).ToList();
+                var checkMail2 = ctx.Users.Where(d => d.Email == profile.Email && d.isDeleted == false && d.isActive == true).ToList();
+
+                if ((newMail.Count == 0 && checkMail1.Count >= 0) || (newMail.Count == 0 && checkMail2.Count >= 0))
+                {
+                    var profileData = ctx.Users.Where(d => d.UserName == profile.UserName).First();
+
+                    profileData.Email = profile.Email;
+                    profileData.Name = profile.Name;
+                    profileData.Surname = profile.SurName;
+                    profileData.Address = profile.Address;
+                    profileData.Gender = profile.Gender;
+                    profileData.Birthday = profile.Birthday;
+                    profileData.Phone = profile.Phone;
+                    profileData.UpdatedTime = SriLankanDateTimeNow();
+
+                    ctx.SaveChanges();
+
+                    var ret_results = new
+                    {
+                        IsSuccess = true,
+                        ReturnMsg = "User profile data updated successfully"
+                    };
+
+                    return ret_results;
+                }
+
+                else if (newMail.Count != 0 || (checkMail1.Count == 0 && checkMail2.Count == 0))
+                {
+                    var ret_results = new
+                    {
+                        IsSuccess = false,
+                        ReturnMsg = "Email already taken"
+                    };
+
+                    return ret_results;
+                }
+                else
+                {
+                    var ret_results = new
+                    {
+                        IsSuccess = false,
+                        ReturnMsg = "User profile data update failed"
+                    };
+
+                    return ret_results;
                 }
             }
             catch (Exception ex)
