@@ -251,7 +251,7 @@ namespace DistributionPortal.Data
 
         }
 
-        //Get All users
+        // Get All users
         public string GetAllUsers()
         {
             try
@@ -265,8 +265,6 @@ namespace DistributionPortal.Data
                              h.UserName,
                              h.UserRole,
                              h.Email,
-                             h.Customer1Name,
-                             h.Customer2Name,
                              h.Name,
                              h.Surname,
                              h.Birthday,
@@ -276,10 +274,8 @@ namespace DistributionPortal.Data
                              h.Position,
                              h.Phone,
                              h.Address,
-                             h.Facebook,
                              h.isActive,
                              h.isDeleted,
-                             h.ProfilePicture,
                              h.CreatedBy
                          }).ToList();
 
@@ -291,6 +287,113 @@ namespace DistributionPortal.Data
             {
                 return ex.Message;
             }
+        }
+
+        // Create File
+        public object CreateFile(ShareFilesViewModel file)
+        {
+            try
+            {
+                var username = (from h in ctx.Users where h.UserName == file.Author select h.Name).FirstOrDefault();
+
+                var sharepoint = new SharePoint();
+
+                sharepoint.Topic = file.Topic.ToString();
+                sharepoint.RoleName = file.RoleName;
+                sharepoint.Author = username;
+                sharepoint.Abstract = file.Abstract.ToString();
+                sharepoint.Link = file.Link;
+                sharepoint.Downloads = 0;
+                sharepoint.Status = 1;
+                sharepoint.CreatedBy = file.Author;
+                sharepoint.CreatedTime = SriLankanDateTimeNow();
+                sharepoint.UpdatedBy = file.Author;
+                sharepoint.UpdatedTime = SriLankanDateTimeNow();
+
+                AddEntity(sharepoint);
+
+                if (SaveAll())
+                {
+                    var ret_results = new
+                    {
+                        IsSuccess = true,
+                        ReturnMsg = "Document created successfully",
+                        CreateTime = sharepoint.CreatedTime
+                    };
+
+                    return ret_results;
+                }
+                else
+                {
+                    var ret_results = new
+                    {
+                        IsSuccess = false,
+                        ReturnMsg = "Document created fail"
+                    };
+
+                    return ret_results;
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        // Get All Shared Files
+        public string GetAllSharedFiles(string user)
+        {
+            try
+            {
+                if (user == "KM Admin")
+                {
+                    var FileList = (from f in ctx.SharePoint
+                                             orderby f.Id descending
+                                             select new
+                                             {
+                                                 f.Id,
+                                                 f.Topic,
+                                                 f.RoleName,
+                                                 f.Author,
+                                                 f.Abstract,
+                                                 f.Link,
+                                                 f.Downloads,
+                                                 f.Status,
+                                                 f.CreatedBy,
+                                                 f.CreatedTime
+                                             });
+
+                    var output = JsonConvert.SerializeObject(FileList);
+                    return output;
+                }
+                else
+                {
+                    var FileList = (from f in ctx.SharePoint
+                                    where f.RoleName == user
+                                    orderby f.Id descending
+                                    select new
+                                    {
+                                        f.Id,
+                                        f.Topic,
+                                        f.RoleName,
+                                        f.Author,
+                                        f.Abstract,
+                                        f.Link,
+                                        f.Downloads,
+                                        f.Status,
+                                        f.CreatedBy,
+                                        f.CreatedTime
+                                    });
+
+                    var output = JsonConvert.SerializeObject(FileList);
+                    return output;
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
         }
     }
 }

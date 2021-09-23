@@ -19,27 +19,48 @@ namespace DistributionPortal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserProfileController : ControllerBase
+    public class ShareFilesController : ControllerBase
     {
         private readonly IDPRepository distributionRepository;
         private readonly IHostingEnvironment env;
         private readonly UserManager<UserDetails> userManager;
 
-        public UserProfileController(IDPRepository distributionRepository, IHostingEnvironment env, UserManager<UserDetails> userManager)
+        public ShareFilesController(IDPRepository distributionRepository, IHostingEnvironment env, UserManager<UserDetails> userManager)
         {
             this.distributionRepository = distributionRepository;
             this.env = env;
             this.userManager = userManager;
         }
 
-        // GET All user related details
-        [HttpGet]
-        [Route("getLoggedInUserDetails/{userID}")]
-        public IActionResult GetLoggedInUserDetails(string userID)
+        // Create shared file
+        [HttpPost]
+        [Route("createFile")]
+        public IActionResult CreateFile([FromBody] ShareFilesViewModel file)
         {
             try
             {
-                return Ok(distributionRepository.GetLoggedInUserDetails(userID));
+                return Ok(distributionRepository.CreateFile(file));
+            }
+            catch (Exception ex)
+            {
+                var ret_results = new
+                {
+                    IsSuccess = false,
+                    ReturnMsg = ex.Message
+                };
+
+                return Ok(ret_results);
+            }
+        }
+
+        // Get All Shared Files
+        [HttpGet]
+        [Route("getAllSharedFiles/{user}")]
+        public IActionResult GetAllSharedFiles(string user)
+        {
+            try
+            {
+                return Ok(distributionRepository.GetAllSharedFiles(user));
             }
             catch (Exception ex)
             {
@@ -47,34 +68,5 @@ namespace DistributionPortal.Controllers
             }
         }
 
-        // Update user related details
-        [HttpPut]
-        [Route("updateLoggedInUserDetails")]
-        public IActionResult UpdateLoggedInUserDetails([FromBody] UserProfileViewModel profile)
-        {
-            try
-            {
-                return Ok(distributionRepository.UpdateLoggedInUserDetails(profile));
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        // Get All Users
-        [HttpGet]
-        [Route("getAllUsers")]
-        public IActionResult GetAllUsers()
-        {
-            try
-            {
-                return Ok(distributionRepository.GetAllUsers());
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
     }
 }

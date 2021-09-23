@@ -14,6 +14,8 @@ namespace DistributionPortal.Data
         object UpdateLoggedInUserDetails(UserProfileViewModel profile);
         string GetAllUserRoles();
         string GetAllUsers();
+        object CreateFile(ShareFilesViewModel file);
+        string GetAllSharedFiles(string user);
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+
 using DistributionPortal.Data.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,8 @@ namespace DistributionPortal.Data
         {
             base.OnModelCreating(modelBuilder);
         }
+
+        public DbSet<SharePoint> SharePoint { get; set; }
 
     }
 }
