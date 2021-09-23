@@ -164,6 +164,7 @@ namespace DistributionPortal.Data
             }
         }
 
+        // Update LoggedIn User Data
         public object UpdateLoggedInUserDetails(UserProfileViewModel profile)
         {
             try
@@ -177,6 +178,7 @@ namespace DistributionPortal.Data
                     var profileData = ctx.Users.Where(d => d.UserName == profile.UserName).First();
 
                     profileData.Email = profile.Email;
+                    profileData.NormalizedEmail = profile.Email.ToUpper();
                     profileData.Name = profile.Name;
                     profileData.Surname = profile.SurName;
                     profileData.Address = profile.Address;
@@ -216,6 +218,74 @@ namespace DistributionPortal.Data
 
                     return ret_results;
                 }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        // Get User Roles
+        public string GetAllUserRoles()
+        {
+            try
+            {
+                var e = (from a in ctx.Roles
+                         where a.RoleStatus == 0
+                         orderby a.RoleId ascending
+                         select new
+                         {
+                             a.Id,
+                             a.Name,
+                             a.RoleType
+                         }).ToList();
+
+                var output = JsonConvert.SerializeObject(e);
+
+                return output;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+        }
+
+        //Get All users
+        public string GetAllUsers()
+        {
+            try
+            {
+                var e = (from h in ctx.Users
+                         where h.isDeleted == false /*&& (h.isActive == true || h.isActive == false)*/
+                         orderby h.CreatedTime descending
+                         select new
+                         {
+                             h.Id,
+                             h.UserName,
+                             h.UserRole,
+                             h.Email,
+                             h.Customer1Name,
+                             h.Customer2Name,
+                             h.Name,
+                             h.Surname,
+                             h.Birthday,
+                             h.Gender,
+                             h.Image,
+                             h.Company,
+                             h.Position,
+                             h.Phone,
+                             h.Address,
+                             h.Facebook,
+                             h.isActive,
+                             h.isDeleted,
+                             h.ProfilePicture,
+                             h.CreatedBy
+                         }).ToList();
+
+                var output = JsonConvert.SerializeObject(e);
+
+                return output;
             }
             catch (Exception ex)
             {

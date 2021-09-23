@@ -12,6 +12,8 @@ namespace DistributionPortal.Data
         Task<object> createUser(UserDetailsViewModel userdata);
         string GetLoggedInUserDetails(string userID);
         object UpdateLoggedInUserDetails(UserProfileViewModel profile);
+        string GetAllUserRoles();
+        string GetAllUsers();
 
     }
 }
